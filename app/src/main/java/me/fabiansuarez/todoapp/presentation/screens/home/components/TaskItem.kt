@@ -1,4 +1,4 @@
-package me.fabiansuarez.todoapp.presentation.home
+package me.fabiansuarez.todoapp.presentation.screens.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,7 +21,6 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.max
 import me.fabiansuarez.todoapp.domain.Category
 import me.fabiansuarez.todoapp.domain.Task
 import me.fabiansuarez.todoapp.ui.theme.ToDoAppTheme
@@ -75,7 +74,7 @@ fun TaskItem(
                 style = MaterialTheme.typography.titleSmall.copy(
                     textDecoration = if (task.isCompleted) TextDecoration.LineThrough else TextDecoration.None
                 ),
-                color = MaterialTheme.colorScheme.onPrimaryContainer
+                color = MaterialTheme.colorScheme.onPrimary
             )
             if (!task.isCompleted) {
                 task.description?.let {

@@ -1,4 +1,4 @@
-package me.fabiansuarez.todoapp.presentation.home
+package me.fabiansuarez.todoapp.presentation.screens.home.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
