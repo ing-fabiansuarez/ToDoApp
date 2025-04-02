@@ -106,7 +106,9 @@ fun HomeScreen(
                 SumarryInfo(
                     modifier = Modifier.padding(horizontal = 8.dp),
                     date = state.date,
-                    taskSummary = state.summary
+                    taskSummary = state.summary,
+                    totalTask = state.completedTask.size + state.pendingTask.size,
+                    completedTasks = state.completedTask.size
                 )
             }
             stickyHeader {
