@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.fabiansuarez.todoapp.data.FakeTaskLocalDataSource
 import me.fabiansuarez.todoapp.domain.Task
+import me.fabiansuarez.todoapp.presentation.screens.home.HomeScreenRoot
 import me.fabiansuarez.todoapp.ui.theme.ToDoAppTheme
 import java.util.UUID
 
@@ -30,40 +31,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ToDoAppTheme {
-                var text by remember { mutableStateOf("") }
-                val fakeTaskLocalDataSource = FakeTaskLocalDataSource()
-
-                LaunchedEffect(true) {
-                    fakeTaskLocalDataSource.taskFlow.collect {
-                        text = it.toString()
-                    }
-
-                }
-
-                LaunchedEffect(true) {
-                    fakeTaskLocalDataSource.addTask(
-                        Task(
-                            id = UUID.randomUUID().toString(),
-                            title = "Task 1",
-                            description = "Description 1"
-                        )
-                    )
-                    fakeTaskLocalDataSource.addTask(
-                        Task(
-                            id = UUID.randomUUID().toString(),
-                            title = "Task 1",
-                            description = "Description 1"
-                        )
-                    )
-                }
-
-                Scaffold { innerPadding ->
-                    Column(modifier = Modifier.padding(innerPadding)) {
-                        Text(text = text)
-                    }
-                }
-
-
+                HomeScreenRoot()
             }
         }
     }
