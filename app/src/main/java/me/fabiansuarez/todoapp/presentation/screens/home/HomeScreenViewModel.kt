@@ -11,6 +11,8 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import me.fabiansuarez.todoapp.data.FakeTaskLocalDataSource
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class HomeScreenViewModel : ViewModel() {
     private val taskLocalDataSource = FakeTaskLocalDataSource()
@@ -22,13 +24,18 @@ class HomeScreenViewModel : ViewModel() {
     val event = eventChannel.receiveAsFlow()
 
     init {
+
+        state = state.copy(
+            date = LocalDate.now().let {
+                DateTimeFormatter.ofPattern("EEE, MMMM dd yyyy").format(it)
+            }
+        )
         taskLocalDataSource.taskFlow.onEach {
             val completedTask = it.filter { task -> task.isCompleted }
             val pendingTask = it.filter { task -> !task.isCompleted }
 
             state = state.copy(
-                date = "April 09,2025",
-                summary = "${pendingTask.size} incomplete, ${completedTask.size} completed",
+                summary = "You have ${pendingTask.size} pending task",
                 completedTask = completedTask,
                 pendingTask = pendingTask
             )

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,7 +48,9 @@ fun SumarryInfo(
     }
 
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Column {
+        Column (
+            modifier = Modifier.weight(1.5f)
+        ) {
             Text(
                 text = date,
                 style = MaterialTheme.typography.headlineLarge,
@@ -65,6 +68,7 @@ fun SumarryInfo(
             modifier = Modifier
                 .padding(16.dp)
                 .aspectRatio(1f)
+                .weight(1f)
         ) {
             val colorBase = MaterialTheme.colorScheme.inversePrimary
             val progress = MaterialTheme.colorScheme.primary
